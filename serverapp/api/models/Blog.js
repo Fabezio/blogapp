@@ -1,25 +1,25 @@
-let mongoose = require('mongoose')
-let blogSchema = mongoose.Schema({
+const mongoose = require('mongoose')
+const blogSchema = mongoose.Schema({
   title: {
     type: String,
-    required: true,
+    required: true
   },
   content: {
     type: String,
-    required: true,
+    required: true
   },
   category: {
     type: String,
-    required: true,
+    required: true
   },
   author: {
     type: String,
-    required: true,
+    required: true
   },
   created: {
     type: Date,
-    default: Date.now(),
-  },
+    default: Date.now()
+  }
 })
-var Blog = mongoose.model('Blog', blogSchema)
+const Blog = mongoose.model('Blog', blogSchema)
 module.exports = Blog

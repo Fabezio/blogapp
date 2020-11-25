@@ -1,9 +1,9 @@
-let mongoose = require('mongoose')
+const mongoose = require('mongoose')
 const Blog = require('../models/Blog')
 
 exports.allBlogPost = async (req, res) => {
   try {
-    let posts = await Blog.find()
+    const posts = await Blog.find()
     res.status(200).json(posts)
   } catch (err) {
     res.status(500).json(err)
@@ -16,9 +16,9 @@ exports.addBlogPost = async (req, res) => {
       title: req.body.title,
       content: req.body.content,
       category: req.body.category,
-      author: req.body.author,
+      author: req.body.author
     })
-    let newPost = await post.save()
+    const newPost = await post.save()
     res.status(200).json({ data: newPost })
   } catch (err) {
     res.status(500).json({ error: err })
@@ -28,7 +28,7 @@ exports.addBlogPost = async (req, res) => {
 exports.deleteBlogPost = async (req, res) => {
   try {
     const id = req.params.blogId
-    let result = await Blog.remove({ _id: id })
+    const result = await Blog.remove({ _id: id })
     res.status(200).json(result)
   } catch (err) {
     res.status(500).json(err)
@@ -38,7 +38,7 @@ exports.deleteBlogPost = async (req, res) => {
 exports.updateBlogPost = async (req, res) => {
   try {
     const id = req.params.blogId
-    let result = await Blog.findByIdAndUpdate(id, req.body)
+    const result = await Blog.findByIdAndUpdate(id, req.body)
     res.status(200).json(result)
   } catch (err) {
     res.status(500).json(err)
